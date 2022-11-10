@@ -8,7 +8,7 @@ export class URLController {
 		try {
 			// if (!req.params) console.log('nao tem params');
 
-			console.log('req');
+			// console.log('req');
 
 			if (!parseFloat(req.params.num1) || !parseFloat(req.params.num2))
 				return response.status(401).json({ erro: 'Parâmetro inválido!' });
