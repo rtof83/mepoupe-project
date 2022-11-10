@@ -1,14 +1,14 @@
-import express from 'express'
-import cors from 'cors'
-import { URLController } from './controller/URLController'
+import express from 'express';
+import { URLController } from './controller/URLController';
 
-const api = express()
-api.use(express.json())
-api.use(cors())
+const api = express();
+api.use(express.json());
 
+const port = 3001;
 
-const urlController = new URLController()
+const urlController = new URLController();
 
-api.post('/avg', urlController.avg);
+api.get('/media/:num1/:num2', urlController.avg);
+api.get('/cep/:cep', urlController.cep);
 
-api.listen(3001, () => console.log('Express listening'))
+api.listen(port, () => console.log(`listening on port ${port}...`));
