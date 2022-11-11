@@ -7,4 +7,5 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - .:/Documentos/mepoupe-app
+      - .:/app/mepoupe-project
+      - /app/mepoupe-project/node_modules
