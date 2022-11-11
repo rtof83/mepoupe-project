@@ -24,10 +24,15 @@
   - npm run build;
   - npm start;
 
-- Docker:
+- Docker (build):
+  - docker build -t {imagem} .;
+  - docker run -p {porta}:{porta} -d {imagem};
+
+- Docker (compose):
   - docker-compose up;
 
 - Testes:
+  - npm install;
   - npx jest;
 
 &nbsp;
@@ -58,7 +63,7 @@
     ``` javascript
     FROM node:alpine
 
-    WORKDIR /Documentos/mepoupe-app
+    WORKDIR /app/mepoupe-project
 
     COPY package*.json ./
 
@@ -78,12 +83,13 @@
 
         services:
         dockernode:
-            build: .
-            command: npm run dev
-            ports:
+          build: .
+          command: npm run dev
+          ports:
             - "3001:3001"
-            volumes:
-            - .:/Documentos/mepoupe-app
+          volumes:
+            - .:/app/mepoupe-project
+            - /app/mepoupe-project/node_modules
     ```
 &nbsp;
 
