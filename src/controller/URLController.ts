@@ -29,7 +29,7 @@ export class URLController {
 			
 			response.status(200).json(result);
 		} catch {
-			response.status(400).json({ erro: 'URL não encontrada' });
+			response.status(404).json({ erro: 'URL não encontrada' });
 		};
 	};
 
@@ -39,9 +39,9 @@ export class URLController {
 			await axios.get(process.env.viaCEP_URL + req.params.cep + process.env.viacep_format)
 				.then(({ data }) => {
 					if (data.cep && !data.bairro)
-						response.status(401).json({ erro: 'Não foi possível encontrar o Bairro deste CEP!' });
+						response.status(404).json({ erro: 'Não foi possível encontrar o Bairro deste CEP!' });
 					else if (data.erro)
-						response.status(401).json({ erro: 'Não foi possível encontrar o endereço deste CEP!' });
+						response.status(404).json({ erro: 'Não foi possível encontrar o endereço deste CEP!' });
 					else
 						response.status(200).json(data);
 				})
