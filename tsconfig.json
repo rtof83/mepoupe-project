@@ -13,7 +13,7 @@
 		"removeComments": true,
 		"preserveConstEnums": true,
 		"outDir": "./dist",
-		"rootDir": "./src/",
+		"rootDir": "./src",
 		"sourceMap": true,
 		"lib": ["es6", "dom", "es2017", "es7"],
 		"resolveJsonModule": true,
