@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "05ad3de1-7bfe-4bdb-adaf-46a8a38b38f0",
+		"name": "mepoupe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17279479"
+	},
+	"item": [
+		{
+			"name": "media",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\": 2,\r\n    \"num2\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/media/3/332",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"media",
+						"3",
+						"332"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cep",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cep\": \"181500002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/cep/01310200",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"cep",
+						"01310200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "media log",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\": 2,\r\n    \"num2\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/media/3/332?log",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"media",
+						"3",
+						"332"
+					],
+					"query": [
+						{
+							"key": "log",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
