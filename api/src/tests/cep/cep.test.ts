@@ -27,3 +27,11 @@ describe('Test CEP Endpoint', () => {
         expect(res.body.erro).toEqual('Não foi possível encontrar o endereço deste CEP!');
     });
 });
+
+describe('Test CEP Endpoint', () => {
+    it('should return cep log list', async () => {
+        const res = await request(app).get('/log/cep');
+
+        expect(res.statusCode).toEqual(200);
+    });
+});

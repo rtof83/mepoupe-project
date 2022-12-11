@@ -27,3 +27,11 @@ describe('Test Average Endpoint', () => {
         expect(res.body).toHaveProperty('log');
     });
 });
+
+describe('Test Average Endpoint', () => {
+    it('should return average log list', async () => {
+        const res = await request(app).get('/log/media');
+
+        expect(res.statusCode).toEqual(200);
+    });
+});
