@@ -51,21 +51,6 @@ export class URLController {
 		};
 	};
 
-	public logMedia(req: Request, response: Response) {
-		try {
-			const query = getConnMedia()
-							.get('logMedia')
-							.value();
-
-			if (query.length)
-				response.status(200).json(query);
-			else
-				response.status(404).json({ message: 'record not found' });
-		} catch(error) {
-			response.status(400).json(error);
-		};
-	};
-
 	// endpoint cep
 	public async cep(req: Request, response: Response): Promise<void> {
 		try {
@@ -99,16 +84,33 @@ export class URLController {
 		};
 	};
 
-	public logCEP(req: Request, response: Response) {
+	public getLog(req: Request, response: Response) {
 		try {
-			const query = getConnCEP()
-							.get('logCEP')
-							.value();
+			let query;
+			if (req.params.route === 'media')
+				query = getConnMedia().get('logMedia').value();
+			else if (req.params.route === 'cep')
+				query = getConnCEP().get('logCEP').value();
 
 			if (query.length)
 				response.status(200).json(query);
 			else
 				response.status(404).json({ message: 'record not found' });
+		} catch(error) {
+			response.status(400).json(error);
+		};
+	};
+
+	public delLog(req: Request, response: Response) {
+		try {
+			if (req.params.route === 'media')
+				getConnMedia().get('logMedia').remove().write();
+			else if (req.params.route === 'cep')
+				getConnCEP().get('logCEP').remove().write();
+			else
+				return response.status(404).json({ error: 'route not found' });
+
+			response.status(200).json({ message: 'records deleted successfully!' });
 		} catch(error) {
 			response.status(400).json(error);
 		};

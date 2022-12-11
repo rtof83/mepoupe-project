@@ -1,6 +1,7 @@
 api/node_modules
 api/dist
 api/coverage
+api/src/database/*.json
 
 web/node_modules
 web/build
