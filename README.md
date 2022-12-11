@@ -6,30 +6,32 @@
 ## Foi utilizado para contrução:
 - API -> Node.js;
 - Testes -> Jest;
+- DB (embedded) -> LowDB;
 - Conteinerização -> Docker;
 - Ferramentas:
-    - Visual Studio Code 1.73.1;
+    - Visual Studio Code 1.74.0;
+    - viacep.com.br
     - Console de Gerenciamento da AWS;
 
 &nbsp;
 
 ## Instalação e Inicialização:
 
-- npm (nodemon):
+- npm (/api):
   - npm install;
   - npm run dev;
 
-- npm (build):
+- npm (/web):
   - npm install;
-  - npm run build;
   - npm start;
 
-- Docker (build):
+- Docker (build /api e /web):
   - docker build -t {imagem} .;
   - docker run -p {porta}:{porta} -d {imagem};
 
 - Docker (compose):
-  - docker-compose up;
+  - construção de ambos os projetos (/raiz):
+    - docker-compose up;
 
 - Testes:
   - npm install;
@@ -38,11 +40,13 @@
 &nbsp;
 
 - ### a aplicação pode ser acessada através dos links:
+  - api:
     - http://18.234.224.108:3001/media/3/7;
     - http://18.234.224.108:3001/media/3/7?log;
     - http://18.234.224.108:3001/cep/01310200;
-    
-    - API instanciada em EC2 AWS (http://18.234.224.108:3001);
+
+  - web:
+    - http://mepoupe-project.s3-website-us-east-1.amazonaws.com
 
 &nbsp;
 
@@ -58,7 +62,7 @@
 
 ---
 
-- [Dockerfile](https://github.com/rtof83/mepoupe-project/blob/main/Dockerfile);
+- [Dockerfile (api)](https://github.com/rtof83/mepoupe-project/blob/main/api/Dockerfile);
 
     ``` javascript
     FROM node:alpine
@@ -76,20 +80,40 @@
     CMD ["npm", "run", "dev"]
     ```
 
+- [Dockerfile (web)](https://github.com/rtof83/mepoupe-project/blob/main/web/Dockerfile);
+
+    ``` javascript
+    FROM node:16
+
+    WORKDIR /app/mepoupe-web
+
+    COPY ./package*.json ./
+
+    RUN npm install
+
+    COPY . .
+
+    EXPOSE 3000
+
+    CMD ["npm", "start"]
+    ```
+
 - [docker-compose](https://github.com/rtof83/mepoupe-project/blob/main/docker-compose.yml);
 
     ``` javascript
        version: "3"
 
-        services:
-        dockernode:
-          build: .
-          command: npm run dev
-          ports:
+       services:
+
+        dockerapi:
+            build: ./api
+            ports:
             - "3001:3001"
-          volumes:
-            - .:/app/mepoupe-project
-            - /app/mepoupe-project/node_modules
+            
+        dockerweb:
+            build: ./web
+            ports:
+            - "3000:3000"
     ```
 &nbsp;
 
@@ -153,6 +177,53 @@
             }
             ```
 
+    &nbsp;
+
+    - GET (lista log média):
+
+        - {baseURL}/log/media -> retorna lista de logs:
+
+            - exemplo de saída:
+
+            ```javascript
+            [
+              {
+                 "id": "71099770-7997-11ed-a957-392d016338a6",
+                 "num1": "2",
+                 "num2": "3",
+                 "avg": "2.50",
+                 "datetime": "2022-12-11T21:04:46.183Z"
+              }
+            ]
+            ```
+
+    &nbsp;
+
+    - GET (lista log cep):
+
+        - {baseURL}/log/cep -> retorna lista de logs:
+
+            - exemplo de saída:
+
+            ```javascript
+            [
+              {
+                  "id": "71482710-7997-11ed-9e73-b3d5c2169071",
+                  "cep": "01310-200",
+                  "log": "Avenida Paulista",
+                  "uf": "SP",
+                  "datetime": "2022-12-11T21:04:46.593Z"
+              }
+            ]
+            ```
+
+    &nbsp;
+
+    - DELETE (média e cep):
+
+        - {baseURL}/log/media -> exlcui toda a lista de logs média;
+        - {baseURL}/log/cep -> exlcui toda a lista de logs cep;
+
 &nbsp;
 
 - Middlewares:
@@ -170,9 +241,11 @@
     - teste de endpoint;
     - verificação numérica;
     - retorno de log;
+    - retorno de lista log;
 
   - [cep](https://github.com/rtof83/mepoupe-project/blob/main/src/tests/cep/cep.test.ts):
 
     - teste de endpoint e retorno de bairro;
     - retorno de endereço sem bairro;
     - endereço não localizado;
+    - retorno de lista log;
