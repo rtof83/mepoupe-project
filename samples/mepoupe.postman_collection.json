@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "05ad3de1-7bfe-4bdb-adaf-46a8a38b38f0",
+		"_postman_id": "5f69b0d3-241d-45d9-a2c1-d329a70d4b6b",
 		"name": "mepoupe",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17279479"
@@ -100,8 +100,84 @@
 					"query": [
 						{
 							"key": "log",
-							"value": null
+							"value": ""
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "media list log",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/log/cep",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"log",
+						"cep"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cep list log",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/log/cep",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"log",
+						"cep"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete cep list log",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/log/cep",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"log",
+						"cep"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete media list log",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}:{{PORT}}/log/media",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"log",
+						"media"
 					]
 				}
 			},
