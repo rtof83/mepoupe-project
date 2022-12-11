@@ -2,7 +2,8 @@
   "name": "mepoupe-api",
   "version": "1.0.0",
   "description": "mepoupe-project",
-  "main": "index.js",
+  "main": "index.ts",
+  "nodemonConfig": { "ext": "ts", "ignore": ["*.test.ts", "db/*"], "delay": "2" },
   "scripts": {
     "build:watch": "tsc -w",
     "build": "tsc -b",
@@ -22,7 +23,9 @@
     "eslint": "^7.8.1",
     "express": "^4.17.1",
     "tslint": "^6.1.3",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "lowdb": "^1.0.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -33,6 +36,8 @@
     "nodemon": "^2.0.20",
     "supertest": "^6.3.1",
     "ts-jest": "^29.0.3",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "@types/lowdb": "^1.0.7",
+    "@types/uuid": "^8.3.4"
   }
 }

@@ -14,6 +14,9 @@ app.use(express.json());
 
 // routes
 app.get('/media/:num1/:num2', checkMedia, urlController.avg);
+app.get('/logMedia', urlController.logMedia);
+
 app.get('/cep/:cep', checkCEP, urlController.cep);
+app.get('/logCEP', urlController.logCEP);
 
 export default app;
