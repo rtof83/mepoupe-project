@@ -15,6 +15,8 @@ const Header = () => {
                     <ul className="nav navbar-nav">
                         <li><Link to={'/media'}>Média</Link></li>
                         <li><Link to={'/cep'}>CEP</Link></li>
+                        <li><Link to={'/logMedia'}>Log Média</Link></li>
+                        <li><Link to={'/logCEP'}>Log CEP</Link></li>
                     </ul>
                 </div>
             </div>
