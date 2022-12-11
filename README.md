@@ -101,19 +101,19 @@
 - [docker-compose](https://github.com/rtof83/mepoupe-project/blob/main/docker-compose.yml);
 
     ``` javascript
-       version: "3"
+    version: "3"
 
-       services:
+    services:
 
-        dockerapi:
-            build: ./api
-            ports:
-            - "3001:3001"
-            
-        dockerweb:
-            build: ./web
-            ports:
-            - "3000:3000"
+    dockerapi:
+        build: ./api
+        ports:
+        - "3001:3001"
+        
+    dockerweb:
+        build: ./web
+        ports:
+        - "3000:3000"
     ```
 &nbsp;
 
