@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /app/mepoupe-project
+WORKDIR /app/mepoupe-api
 
 COPY package*.json ./
 

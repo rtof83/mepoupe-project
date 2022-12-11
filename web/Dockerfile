@@ -1,6 +1,6 @@
 FROM node:16
 
-WORKDIR /app/coin-converter-web
+WORKDIR /app/mepoupe-web
 
 COPY ./package*.json ./
 
