@@ -113,14 +113,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_URL}}:{{PORT}}/log/cep",
+					"raw": "{{BASE_URL}}:{{PORT}}/log/media",
 					"host": [
 						"{{BASE_URL}}"
 					],
 					"port": "{{PORT}}",
 					"path": [
 						"log",
-						"cep"
+						"media"
 					]
 				}
 			},
